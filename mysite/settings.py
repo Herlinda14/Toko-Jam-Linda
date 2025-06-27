@@ -103,20 +103,20 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # }
 
 
-# DATABASES = {
-#      'default': {
-#          'ENGINE' : 'django.db.backends.mysql',
-#          'NAME' : 'artikel_blog',
-#          'USER' : 'root',
-#          'PASSWORD' : '',
-#          'HOST' : 'localhost',
-#          'PORT' : '3306'
-#      }
-# }
-
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+     'default': {
+         'ENGINE' : 'django.db.backends.mysql',
+         'NAME' : 'artikel_blog',
+         'USER' : 'root',
+         'PASSWORD' : '',
+         'HOST' : 'localhost',
+         'PORT' : '3306'
+     }
 }
+
+# DATABASES = {
+#     'default': dj_database_url.config(conn_max_age=600)
+# }
 
 
 # Password validation
