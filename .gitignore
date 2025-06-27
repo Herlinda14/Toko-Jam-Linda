@@ -1,4 +1,4 @@
-# Python bytecode
+# Python
 __pycache__/
 *.py[cod]
 
@@ -6,7 +6,7 @@ __pycache__/
 venv/
 env/
 
-# Django stuff
+# Django
 *.sqlite3
 db.sqlite3
 staticfiles/
@@ -15,6 +15,5 @@ media/
 # Environment variables
 .env
 
-# VSCode settings
+# VS Code
 .vscode/
-
