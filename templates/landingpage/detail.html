@@ -1,0 +1,71 @@
+{% extends "landingpage/base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
+
+  <!-- START Artikel Detail -->
+  <section class="py-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 ms-auto me-auto">
+          <h6 class="text-uppercase text-primary text-sm mb-2">{{ artikel.kategori }}</h6>
+          
+          {% if artikel.gambar %}
+            <img src="{{ artikel.gambar.url }}" class="img-fluid rounded mb-4" alt="{{ artikel.judul }}">
+          {% else %}
+            <img src="{% static 'landingpage/assets/img/default.jpg' %}" class="img-fluid rounded mb-4" alt="No Image">
+          {% endif %}
+          
+          <h3 class="title mb-3">{{ artikel.judul }}</h3>
+          <p class="text-dark">{{ artikel.konten|safe }}</p>
+          <div class="d-flex justify-content-between align-items-center mt-4">
+            <span class="text-muted">Penulis: {{ artikel.created_by }}</span>
+            <small class="text-muted">{{ artikel.created_at|date:"j F Y" }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- START Artikel Lainnya -->
+  <section class="py-7 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center mb-5">
+          <h4 class="fw-bold">Artikel Lainnya</h4>
+        </div>
+
+        {% for a in artikel_lainnya %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header p-0 position-relative">
+              {% if a.gambar %}
+                <img src="{{ a.gambar.url }}" class="img-fluid rounded-top" alt="{{ a.judul }}">
+              {% else %}
+                <img src="{% static 'landingpage/assets/img/default.jpg' %}" class="img-fluid rounded-top" alt="No Image">
+              {% endif %}
+            </div>
+            <div class="card-body">
+              <span class="badge bg-primary mb-2">{{ a.kategori }}</span>
+              <h5><a href="{% url 'detail_artikel' a.id %}" class="text-dark text-decoration-none">{{ a.judul }}</a></h5>
+              <p class="card-text text-muted">{{ a.konten|truncatewords:20 }}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+              <small class="text-muted">Oleh: {{ a.created_by }}</small>
+              <small class="text-muted">{{ a.created_at|date:"j M Y" }}</small>
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+          <p class="text-muted">Belum ada artikel lainnya.</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+</div>
+
+{% endblock %}

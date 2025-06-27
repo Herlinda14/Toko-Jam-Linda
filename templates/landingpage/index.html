@@ -1,0 +1,120 @@
+{% extends 'landingpage/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-7">
+      <section class="py-5">
+        {% for a in artikel %}
+          <div class="card card-plain card-blog mt-5">
+            <div class="row">
+              <div class="col-lg-4 col-md-4">
+                <div class="card-image position-relative border-radius-lg">
+                  <div class="blur-shadow-image">
+                    {% if a.gambar %}
+                      <img class="img border-radius-lg" src="{{ a.gambar.url }}" alt="{{ a.judul|default:'Gambar Artikel' }}" loading="lazy">
+                    {% else %}
+                      <img class="img border-radius-lg" src="{% static 'landingpage/assets/img/default.jpg' %}" alt="Gambar Default" loading="lazy">
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-7 col-md-7 my-sm-auto mt-3 ms-sm-3">
+                <h4>
+                  <a href="{% url 'detail_artikel' a.id %}" class="text-dark">{{ a.judul }}</a>
+                </h4>
+                <p>{{ a.konten|truncatewords:50 }}</p>
+                <div class="author">
+                  <img src="{% static 'landingpage/assets/img/team-4.jpg' %}" alt="team-4" class="avatar avatar-sm shadow me-2 border-radius-lg" loading="lazy">
+                  <p class="my-auto">{{ a.created_by }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </section>
+
+      <!-- Pagination Dummy -->
+      <ul class="pagination pagination-primary mt-4 ml-2">
+        {% for i in "12345" %}
+        <li class="page-item {% if forloop.counter == 3 %}active{% endif %}">
+          <a class="page-link" href="#">{{ forloop.counter }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="col-lg-4 ml-auto">
+      <div class="pt-1 pb-5 position-sticky top-1 mt-lg-8 mt-5">
+        <h4 class="mt-5">Kategori</h4>
+        {% for k in kategori %}
+          <a href="#">
+            <div class="card justify-content-center mb-3">
+              <div class="card-body p-3">
+                <h6 class="mb-0">{{ k.nama }}</h6>
+              </div>
+              <div class="position-absolute end-0 me-3">
+                <i class="fas fa-angle-right"></i>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+
+        <h4 class="mt-5">Top Stories</h4>
+
+        <!-- Dummy Top Stories -->
+        {% for i in "123" %}
+       <div class="card card-plain card-blog mt-4">
+      <div class="row">
+          <div class="col-lg-4 col-md-4">
+            <div class="card-image position-relative border-radius-lg">
+              <div class="blur-shadow-image">
+                <!-- Ganti src gambar sesuai tema jam tangan, misal dari unsplash dengan kata kunci "watch" -->
+                <img class="img border-radius-lg" 
+                    src="https://source.unsplash.com/300x200/?watch&sig={{ forloop.counter }}" 
+                    alt="Jam Tangan Linda {{ forloop.counter }}" loading="lazy">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-8 col-md-8 my-sm-auto mt-3">
+            <!-- Judul artikel sesuai tema jam tangan -->
+            <h5>
+              <a href="#" class="text-dark font-weight-normal">
+                Artikel Jam Tangan Linda #{{ forloop.counter }}
+              </a>
+            </h5>
+          </div>
+        </div>
+      </div>
+
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="col-12">
+      <section class="py-5">
+        <h3 class="text-center mb-4 mt-5">Detail Produk</h3>
+        <div class="row">
+          {% for a in artikel %}
+          <div class="col-md-4 mb-4">
+            <div class="card h-100">
+              {% if a.gambar %}
+                <img src="{{ a.gambar.url }}" class="card-img-top" alt="{{ a.judul|default:'Gambar Artikel' }}">
+              {% else %}
+                <img src="{% static 'landingpage/assets/img/default.jpg' %}" class="card-img-top" alt="Gambar Default">
+              {% endif %}
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ a.judul }}</h5>
+                <p class="card-text">{{ a.konten|truncatewords:50 }}</p>
+                <a href="{% url 'detail_artikel' a.id %}" class="btn btn-primary mt-auto">Baca selengkapnya</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+{% endblock %}

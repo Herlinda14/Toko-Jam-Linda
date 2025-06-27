@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}{{ artikel.judul }} - Artikel{% endblock %}
+
+{% block content %}
+<div class="container mt-5 pt-4">
+    <h3 class="text-center mb-4">Deskripsi</h3>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <img src="{{ artikel.gambar.url }}" class="card-img-top" alt="{{ artikel.judul }}">
+                <div class="card-body">
+                    <h4 class="card-title">{{ artikel.judul }}</h4>
+                    <p class="card-text">{{ artikel.konten }}</p>
+                    <a href="/" class="btn btn-primary mt-3">Kembali ke Beranda</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

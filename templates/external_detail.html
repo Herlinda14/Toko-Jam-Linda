@@ -1,0 +1,18 @@
+{% extends "landingpage/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container my-5">
+  <div class="card border-0 shadow-lg rounded-4 p-4">
+    <div class="card-body">
+      <h2 class="fw-bold text-uppercase text-center mb-4" style="letter-spacing: 1px;">{{ artikel.title }}</h2>
+      <hr class="mb-4" style="opacity: 0.2;">
+      <p class="fs-5 text-dark lh-lg">{{ artikel.body }}</p>
+      <div class="text-center mt-5">
+        <a href="{% url 'artikel_eksternal' %}" class="btn btn-outline-dark rounded-pill px-4">
+          ← Kembali ke Daftar
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
