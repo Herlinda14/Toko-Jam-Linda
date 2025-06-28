@@ -40,7 +40,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool, default=False)
 
-ALLOWED_HOSTS = ['.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['herlinda14.pythonanywhere.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -104,15 +104,16 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
 DATABASES = {
-     'default': {
-         'ENGINE' : 'django.db.backends.mysql',
-         'NAME' : 'artikel_blog',
-         'USER' : 'root',
-         'PASSWORD' : '',
-         'HOST' : 'localhost',
-         'PORT' : '3306'
-     }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Herlinda$default',
+        'USER': 'Herlinda',
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': 'Herlinda.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+    }
 }
+
 
 # DATABASES = {
 #     'default': dj_database_url.config(conn_max_age=600)
