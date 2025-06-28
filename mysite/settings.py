@@ -105,14 +105,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE'  : 'django.db.backends.mysql',
-        'NAME'    : 'herlinda14$artikel_blog',       # format: username$nama_database
-        'USER'    : 'herlinda14',                    # nama user = username kamu di PythonAnywhere
-        'PASSWORD': config('DB_PASSWORD'),           # ambil dari .env
-        'HOST'    : 'herlinda14.mysql.pythonanywhere-services.com',
-        'PORT'    : '3306',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Herlinda$default',  # nama database (perhatikan huruf besar/kecil!)
+        'USER': 'Herlinda',          # username dari PythonAnywhere kamu
+        'PASSWORD': config('DB_PASSWORD'),  # ambil dari file .env
+        'HOST': 'Herlinda.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
     }
 }
+
 
 
 # DATABASES = {
